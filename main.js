@@ -53,7 +53,7 @@ start.addEventListener('click', () => {
 })
 
 const openingDialog = document.querySelector('.opening')
-openingDialog.showModal()
+openingDialog.show()
 const displayControl = function(){
 	const boxes = document.querySelectorAll('.grid-child')
 	const player1Name = document.querySelector('.player1-score > .name')
