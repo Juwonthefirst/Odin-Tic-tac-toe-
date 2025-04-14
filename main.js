@@ -88,4 +88,4 @@ const gamecontrols = function(){
 }*/
 
 const openingDialog = document.querySelector('.opening')
-//openingDialog.show()
+openingDialog.show()
