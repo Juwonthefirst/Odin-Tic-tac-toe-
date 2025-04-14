@@ -166,3 +166,22 @@ button:focus{
 .seven, .eight, .nine{
 	border-bottom: none;
 }
+
+dialog{
+	text-align: center;
+	padding: 20px;
+	width: 70%;
+	height: 20%;
+	background: #0E0E0E;
+	align-self: center;
+	justify-self: center;
+	border-radius: 20px;
+}
+
+dialog > h3{
+	font-size: 30px;
+}
+
+button:focus{
+	outline: none;
+}
