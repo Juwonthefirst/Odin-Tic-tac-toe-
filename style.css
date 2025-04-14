@@ -106,12 +106,13 @@ button:focus{
 }
 
 .player1-score{
-	border-right: 7px solid #5D53E9;
+	border-right: 7px solid lightblue;
 	text-align: right;
 }
 
 .player2-score{
-	border-left: 7px solid #68B6BC;
+	border-left: 7px solid lightblue;
+
 }
 
 .current-player{
