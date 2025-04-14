@@ -48,7 +48,7 @@ const gamecontrols = function(){
 
 const displaycontrols = function(){
 	const createBox = function () {
-		const body = document.querySelector('.body')
+		const body = document.querySelector('body')
 		
 	}
 }()

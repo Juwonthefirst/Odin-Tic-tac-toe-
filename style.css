@@ -22,14 +22,7 @@ body {
     height: 100vh;
     max-height: 720px;
 }
-.opening{
-	background-color: #0E0E0E;
-	display: flex;
-	padding: 20px;
-	flex-direction: column;
-	
-}
-.opening > h2{
+body > h2{
 	position: absolute;
 	top: 10%;
 }
@@ -76,14 +69,16 @@ body {
 }
 
 .box > button:focus{
-	animation: click 0.18s linear  forwards;
+	animation: click 0.15s linear  forwards;
 }
 @keyframes click{
 	50%{
+		transform: translateY(3px);
 		border-width: 1px;
 	}
 	
 	100%{
+		transform: translateY(0);
 		border-width: 1px 3px 4px 1px;
 	}
 }
