@@ -8,21 +8,10 @@ const player = function(name, role){
 const X = player('', 'X')
 const O = player('', 'O')
 
-const start = document.querySelector('#play')
-start.addEventListener('click', () => {
-	const player1 = document.querySelector('#player1')
-	const player2 = document.querySelector('#player2')
-	if (player1.value && player2.value){
-		X.name = player1.value;
-		O.name = player2.value;
-		openingDialog.close()
-	}
-})
-
 const gamecontrols = function(){
-	const gameboard = [];
+	const gameboard = ['X', 'O', 'X'];
 	let currentPlayer = X;
-	const showGameboard = function(){return gameboard;}
+	const showGameboard = function(at){return gameboard[at];}
 	const check_status = function (){
 		if(((gameboard[0] === gameboard[1] &&  gameboard[0] === gameboard[2]) || 
 			(gameboard[0] === gameboard[3] &&  gameboard[0] === gameboard[6]) || 
@@ -48,24 +37,76 @@ const gamecontrols = function(){
 	const switchPlayer = function(){
 		this.currentPlayer = (this.currentPlayer === X) ? O : X;
 	};
-	return {currentPlayer, showGameboard, play_at, check_status, switchPlayer}
+	return {currentPlayer, showGameboard, play_at, check_status, switchPlayer, gameboard}
 
 }()
-const game = function(){
-	const playGame = function(){
-		const gameBoxes = document.querySelectorAll('.grid-child')
-		gameBoxes.forEach((box) => {
-			box.addEventListener('click', (event) => {
-				gamecontrols.play_at(event.target.dataset.id)
-				console.log(gamecontrols.showGameboard())
-				event.target.textContent = gamecontrols.currentPlayer.role
-				gamecontrols.switchPlayer()
-			})
-		})
-	};
-	return {playGame}
-}()
+
+const start = document.querySelector('#play')
+start.addEventListener('click', () => {
+	const player1 = document.querySelector('#player1')
+	const player2 = document.querySelector('#player2')
+	if (player1.value && player2.value){
+		X.name = player1.value;
+		O.name = player2.value;
+		openingDialog.close()
+	}
+})
 
 const openingDialog = document.querySelector('.opening')
-openingDialog.show()
-game.playGame()
+openingDialog.showModal()
+const displayControl = function(){
+	const boxes = document.querySelectorAll('.grid-child')
+	const player1Name = document.querySelector('.player1-score > .name')
+	const player1Score = document.querySelector('.player1-score > .score')
+	const player2Name = document.querySelector('.player2-score > .name')
+	const player2Score = document.querySelector('.player2-score > .score')
+	const result = document.querySelector('.result')
+	const resultText = result.firstElementChild
+	const turn = document.querySelector('.current-player > h3')
+	const displayBoard = function(){
+		boxes.forEach((box) => {
+			box.textContent = gamecontrols.showGameboard(box.dataset.id)
+		})
+	}
+	
+	const displayScore = function(){
+		player1Name.textContent = X.name;
+		player2Name.textContent = O.name;
+		player1Score.textContent = X.getScore()
+		player2Score.textContent = O.getScore()
+	}
+	
+	const displayTurn = function(){
+		turn.textContent = `${gamecontrols.currentPlayer.name}'s turn`
+	}
+	
+	const displayResult = function(winner){
+		result.showModal()
+		switch (winner){
+			case 'draw':
+				resultText.textContent = 'You drawed'
+				break
+			case 'X':
+				resultText.textContent = `${X.name} won`
+				break
+			case 'O':
+				resultText.textContent =`${O.name} won`
+		}
+	}
+	return {displayBoard, displayScore, displayTurn, displayResult}
+}()
+
+const game = function(){
+	const boxes = document.querySelectorAll('.grid-child')
+	const play = function(){
+		boxes.forEach((box) => {
+			box.addEventListener('click', () => {
+				let id = box.dataset.id
+				if (gamecontrols.showGameboard(id) === undefined){
+					gamecontrols.play_at(id)
+				}
+				
+			})
+		})
+	}
+}

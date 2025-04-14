@@ -105,7 +105,7 @@ button:focus{
 	padding: none;
 	gap: 20px;
 }
-.score{
+.score-field{
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -139,7 +139,7 @@ button:focus{
 
 .grid-container{
 	display: grid;
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 11vh);
 	grid-template-columns: repeat(3, 1fr);
 	padding: 10px 30px;
 	height: 100%;
