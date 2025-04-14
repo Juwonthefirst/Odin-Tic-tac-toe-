@@ -16,9 +16,8 @@ body, .game {
     display: flex;
     padding: 20px;
     flex-direction: column;
-    max-width: 500px;
     height: 100vh;
-    max-height: 720px;
+    overflow: hidden;
 }
 
 body{
@@ -88,7 +87,8 @@ button:focus{
 
 .game{
 	width: 100%;
-	overflow: hidden;
+	padding: none;
+	gap: 20px;
 }
 .score{
 	width: 100%;
@@ -139,10 +139,29 @@ button:focus{
 }
 
 .extra{
-	position: absolute;
-	top: 75%;
 	display: flex;
 	justify-content: center;
     align-items: center;
-	
+	width: 100%;
+	margin-top: 40px;
+}
+
+.reset{
+	width: 40%;
+	padding: 10px;
+}
+
+.one, .two, .three{
+	border-top: none;
+}
+
+.one, .four, .seven{
+	border-left: none;
+}
+.three, .six, .nine{
+	border-right: none;
+}
+
+.seven, .eight, .nine{
+	border-bottom: none;
 }
