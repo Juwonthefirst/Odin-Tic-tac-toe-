@@ -10,18 +10,73 @@
 </head>
 
 <body>
-	<h2>Tic Tac Toe</h2>
-	<div class="box">
-	  	<div class="player1 field">
-	  	  	<label for="player1">Player one (X)</label>
-	  		<input type="text" id="player1" class="name-box" required placeholder="what is your name Player 1" />	
+	<dialog class="opening">
+		<h2>Tic Tac Toe</h2>
+		<div class="box">
+		  	<div class="player1 field">
+		  	  	<label for="player1">Player one (X)</label>
+		  		<input type="text" id="player1" class="name-box" required placeholder="what is your name Player 1" />	
+			</div>
+		  	<div class="player2 field">
+		  	  	<label for="player2">Player two (O)</label>
+		  		<input type="text" id="player2" class="name-box" required placeholder="What is your name Player 2" />	
+		  	</div>
+		  	<button id="play">Start game</button>
 		</div>
-	  	<div class="player2 field">
-	  	  	<label for="player2">Player two (O)</label>
-	  		<input type="text" id="player2" class="name-box" required placeholder="What is your name Player 2" />	
-	  	</div>
-	  	<button id="play">Start game</button>
+	</dialog>
+	<div class="game">
+		<div class="score">
+			<div class="player1-score card">
+				<p>Juwon</p>
+				<p>1</p>
+			</div>
+			<div class="player2-score card">
+				<p>Joba</p>	
+				<p>5</p>
+			</div>
+		</div>
+		<div class="current-player">
+			<h3>Juwon Turn</h3>
+		</div>
+		<div class="game-box">
+			<div class="grid-container">
+				<div class="grid-child child1">
+				X	
+				</div>
+				<div class="grid-child child2">
+				O	
+				</div>
+				<div class="grid-child child3">
+				O	
+				</div>
+				<div class="grid-child child4">
+				X	
+				</div>
+				<div class="grid-child child5">
+				X	
+				</div>
+				<div class="grid-child child6">
+				O	
+				</div>
+				<div class="grid-child child7">
+				O	
+				</div>
+				<div class="grid-child child8">
+				O	
+				</div>
+				<div class="grid-child child9">
+				X	
+				</div>
+			</div>	
+		</div>
+		<div class="extra">
+			<button class="reset">Reset</button>		
+		</div>
 	</div>
+	<dialog class="result">
+		<h3>🎉juwon wins🎉</h3>
+		<button>Next round</button>
+	</dialog>
 	  <script src="main.js"></script>
 </body>
 </html>

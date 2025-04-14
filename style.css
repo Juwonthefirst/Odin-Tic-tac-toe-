@@ -24,12 +24,11 @@ body{
 	justify-content: center;
 	align-items: center;
 }
-body > h2{
+.opening > h2{
 	position: absolute;
 	top: 10%;
 }
 .box{
-	position: relative;
 	background-color: #1B1B1D;
 	height: 50%;
 	width: 90%;
@@ -40,7 +39,6 @@ body > h2{
 	flex-direction: column;
 	gap: 20px;
 	border-width: 2px 5px 5px 2px;
-	z-index: 1;
 }
 
 .field{
@@ -152,22 +150,22 @@ button:focus{
 	padding: 10px;
 }
 
-.one, .two, .three{
+.child1, .child2, .child3{
 	border-top: none;
 }
 
-.one, .four, .seven{
+.child1, .child4, .child7{
 	border-left: none;
 }
-.three, .six, .nine{
+.child3, .child6, .child9{
 	border-right: none;
 }
 
-.seven, .eight, .nine{
+.child7, .child8, .child9{
 	border-bottom: none;
 }
 
-dialog{
+.result{
 	text-align: center;
 	padding: 20px;
 	width: 70%;
@@ -178,10 +176,22 @@ dialog{
 	border-radius: 20px;
 }
 
-dialog > h3{
+.result > h3{
 	font-size: 30px;
 }
 
 button:focus{
+	outline: none;
+}
+
+.opening{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	border: none;
+	background-color: #0E0E0E;
+}
+
+.opening:focus{
 	outline: none;
 }

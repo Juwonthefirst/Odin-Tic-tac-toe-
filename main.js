@@ -1,14 +1,14 @@
 const player = function(name, role){
-	let score = 0
-	const getScore = function(){ return score }
-	const addScore = function(){ score++ }
-	 return {name, role, getScore, addScore}
+	let score = 0;
+	const getScore = function(){ return score };
+	const addScore = function(){ score++; };
+	return {name, role, getScore, addScore}
 }
 
 const X = player('', 'X')
 const O = player('', 'O')
 
-const start = document.querySelector('#play')
+/*const start = document.querySelector('#play')
 start.addEventListener('click', () => {
 	const player1 = document.querySelector('#player1')
 	const player2 = document.querySelector('#player2')
@@ -16,43 +16,76 @@ start.addEventListener('click', () => {
 		X.name = player1.value;
 		O.name = player2.value;
 	}
-})
+})*/
 
 const gamecontrols = function(){
-	const gameboard = []
-	let currentPlayer = X
-	const showGameboard = function(){return gameboard}
+	const gameboard = [];
+	let currentPlayer = X;
+	const showGameboard = function(){return gameboard;}
 	const check_status = function (){
-		if((gameboard[0] === gameboard[1] &&  gameboard[0] === gameboard[2]) || (gameboard[0] === gameboard[3] &&  gameboard[0] === gameboard[6]) || (gameboard[0] === gameboard[4] &&  gameboard[0] === gameboard[8]) && (gameboard[0] !== undefined)){return gameboard[0]}
-		else if (gameboard[1] === gameboard[4] &&  gameboard[1] === gameboard[7] && gameboard[1] !== undefined){return gameboard[1]}
+		if(((gameboard[0] === gameboard[1] &&  gameboard[0] === gameboard[2]) || 
+			(gameboard[0] === gameboard[3] &&  gameboard[0] === gameboard[6]) || 
+			(gameboard[0] === gameboard[4] &&  gameboard[0] === gameboard[8])) && 
+			(gameboard[0] !== undefined)){return gameboard[0]}
+		else if (gameboard[1] === gameboard[4] &&  gameboard[1] === gameboard[7] && 
+				gameboard[1] !== undefined){return gameboard[1]}
 		
-		else if ((gameboard[2] === gameboard[5] &&  gameboard[2] === gameboard[8]) || (gameboard[2] === gameboard[4] &&  gameboard[2] === gameboard[6]) && (gameboard[2] !== undefined)) {return gameboard[2]}
+		else if (((gameboard[2] === gameboard[5] &&  gameboard[2] === gameboard[8]) || 
+				(gameboard[2] === gameboard[4] &&  gameboard[2] === gameboard[6])) && 
+				(gameboard[2] !== undefined)) {return gameboard[2]}
 		
 		else if (gameboard[3] === gameboard[4] &&  gameboard[3] === gameboard[5] && gameboard[3] !== undefined){return gameboard[3]}
 		
 		else if (gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8] && gameboard[6] !== undefined){return gameboard[6]}
 		
-		else if ((!undefined in gameboard) && (gameboard.length === 9)){return 'draw'}
-	}
+		else if (!undefined in gameboard && gameboard.length === 9){return 'draw'}
+	};
 	const play_at = function(area){
 		gameboard[area] = this.currentPlayer.role;
-	}
+	};
 	
 	const switchPlayer = function(){
-		this.currentPlayer = (this.currentPlayer === X) ? O : X
-	}
-	return {currentPlayer, showGameboard, play_at, check_status, switchPlayer};
-}()
+		this.currentPlayer = (this.currentPlayer === X) ? O : X;
+	};
+	return {currentPlayer, showGameboard, play_at, check_status, switchPlayer}
 
+}
 /*const displaycontrols = function(){
-	const displayGame = function () {
+	const displayGame = function(){
 		const body = document.querySelector('body')
 		body.textContent = '';
 		const game = document.createElement('div')
 		game.classList.add('game')
-		const score = document.createElement('div')
-		score.classList.add('score')
+			const score = document.createElement('div')
+			score.classList.add('score')
+				const player1Card = document.createElement('div')
+				player1Card.classList.add('player1-score card')
+					const name = document.createElement('p')
+					name.textContent = X.name
+					const scoreTag = document.createElement('p')
+					scoreTag.textContent = X.getScore()
+				player1Card.append(name, scoreTag)
+				
+				
+				const player2Card = document.createElement('div')
+				player2Card.classList.add('player2-score card')
+					const player2Name = document.createElement('p')
+					player2Name.textContent = O.name
+					const player2ScoreTag = document.createElement('p')
+					player2ScoreTag.textContent = O.getScore()
+				player2Card.append(player2Name, player2ScoreTag)
+			score.append(player1Card, player2Card)
+		game.appendChild(score)
+			const currentPlayerField = document.createElement('div')
+				const currentPlayerTag = document.createElement('h3')
+				currentPlayerTag.textContent = `${gamecontrols.currentPlayer.name}'s turn`
+			currentPlayerField.appendChild(currentPlayerTag)
+		game.appendChild(currentPlayerField)
+			con	
 		
-	}
-	
-}()*/
+	};
+	return {displayGame}
+}*/
+
+const openingDialog = document.querySelector('.opening')
+//openingDialog.show()
