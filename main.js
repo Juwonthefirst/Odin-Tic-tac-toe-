@@ -15,8 +15,6 @@ start.addEventListener('click', () => {
 	if (player1.value && player2.value){
 		X.name = player1.value;
 		O.name = player2.value;
-		console.log(X,O)
-		console.log(gamecontrols.currentPlayer)
 	}
 })
 
@@ -46,9 +44,15 @@ const gamecontrols = function(){
 	return {currentPlayer, showGameboard, play_at, check_status, switchPlayer};
 }()
 
-const displaycontrols = function(){
-	const createBox = function () {
+/*const displaycontrols = function(){
+	const displayGame = function () {
 		const body = document.querySelector('body')
+		body.textContent = '';
+		const game = document.createElement('div')
+		game.classList.add('game')
+		const score = document.createElement('div')
+		score.classList.add('score')
 		
 	}
-}()
+	
+}()*/
