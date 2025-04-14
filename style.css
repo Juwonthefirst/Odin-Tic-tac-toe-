@@ -24,14 +24,31 @@ body{
 	justify-content: center;
 	align-items: center;
 }
+
+.opening{
+	height: 100%;
+	width: 100%;
+	border: none;
+	background-color: #0E0E0E;
+}
+
+.opening:focus{
+	outline: none;
+}
+
 .opening > h2{
 	position: absolute;
 	top: 10%;
+	text-align: center;
+	width: 100%;
 }
 .box{
+	position: absolute;
+	top: 20%;
 	background-color: #1B1B1D;
 	height: 50%;
-	width: 90%;
+	width: 80%;
+	margin: 0 7%;
 	border: 2px solid lightblue;
 	border-radius: 20px;
 	padding: 30px 10px;
@@ -184,14 +201,3 @@ button:focus{
 	outline: none;
 }
 
-.opening{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	border: none;
-	background-color: #0E0E0E;
-}
-
-.opening:focus{
-	outline: none;
-}
