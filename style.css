@@ -1,0 +1,90 @@
+*{
+	font-family: 'Poppins';
+	margin: 0;
+	padding: 0;
+	color: skyblue;
+}
+label{
+	font-size: 18px;
+}
+
+
+
+body {
+    font-size: 15pt;
+    background-color: #0E0E0E;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    height: 100vh;
+    max-height: 720px;
+}
+.opening{
+	background-color: #0E0E0E;
+	display: flex;
+	padding: 20px;
+	flex-direction: column;
+	
+}
+.opening > h2{
+	position: absolute;
+	top: 10%;
+}
+.box{
+	position: relative;
+	background-color: #1B1B1D;
+	height: 50%;
+	width: 90%;
+	border: 2px solid lightblue;
+	border-radius: 20px;
+	padding: 30px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-width: 2px 5px 5px 2px;
+	z-index: 1;
+}
+
+.field{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.field > input{
+	background: #0E0E0E;
+	border: 2px solid lightblue;
+	border-radius: 10px;
+	padding: 7px;
+}
+
+.field > input:focus{
+	outline: none;
+	border-color: lightblue;
+}
+
+.box > button{
+	padding: 7px;
+	background-color: #0E0E0E;
+	border: 2px solid lightblue;
+	border-radius: 10px;
+	margin-top: 20px;
+	border-width: 1px 3px 4px 1px;
+}
+
+.box > button:focus{
+	animation: click 0.18s linear  forwards;
+}
+@keyframes click{
+	50%{
+		border-width: 1px;
+	}
+	
+	100%{
+		border-width: 1px 3px 4px 1px;
+	}
+}
+
