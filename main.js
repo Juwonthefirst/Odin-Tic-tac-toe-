@@ -9,7 +9,7 @@ const X = player('', 'X')
 const O = player('', 'O')
 
 const gamecontrols = function(){
-	const gameboard = ['X', 'O', 'X'];
+	const gameboard = [];
 	let currentPlayer = X;
 	const showGameboard = function(at){return gameboard[at];}
 	const check_status = function (){
@@ -104,9 +104,14 @@ const game = function(){
 				let id = box.dataset.id
 				if (gamecontrols.showGameboard(id) === undefined){
 					gamecontrols.play_at(id)
+					gamecontrols.switchPlayer()
+					displayControl.displayBoard()
 				}
 				
 			})
 		})
 	}
-}
+	return {play}
+}()
+
+game.play()
