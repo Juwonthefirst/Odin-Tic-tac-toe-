@@ -9,9 +9,10 @@ const X = player('', 'X')
 const O = player('', 'O')
 
 const gamecontrols = function(){
-	const gameboard = [];
+	
+	let gameboard = [];
 	let currentPlayer = X;
-	const showGameboard = function(at){return gameboard[at];}
+	const showGameboard = function(at){return this.gameboard[at];}
 	const check_status = function (){
 		if(((gameboard[0] === gameboard[1] &&  gameboard[0] === gameboard[2]) || 
 			(gameboard[0] === gameboard[3] &&  gameboard[0] === gameboard[6]) || 
@@ -30,6 +31,7 @@ const gamecontrols = function(){
 		
 		else if (!undefined in gameboard && gameboard.length === 9){return 'draw'}
 	};
+	
 	const play_at = function(area){
 		gameboard[area] = this.currentPlayer.role;
 	};
@@ -41,20 +43,8 @@ const gamecontrols = function(){
 
 }()
 
-const start = document.querySelector('#play')
-start.addEventListener('click', () => {
-	const player1 = document.querySelector('#player1')
-	const player2 = document.querySelector('#player2')
-	if (player1.value && player2.value){
-		X.name = player1.value;
-		O.name = player2.value;
-		openingDialog.close()
-	}
-})
-
-const openingDialog = document.querySelector('.opening')
-openingDialog.show()
 const displayControl = function(){
+	
 	const boxes = document.querySelectorAll('.grid-child')
 	const player1Name = document.querySelector('.player1-score > .name')
 	const player1Score = document.querySelector('.player1-score > .score')
@@ -88,9 +78,12 @@ const displayControl = function(){
 				break
 			case 'X':
 				resultText.textContent = `${X.name} won`
+				X.addScore()
 				break
 			case 'O':
 				resultText.textContent =`${O.name} won`
+				O.addScore()
+			
 		}
 	}
 	return {displayBoard, displayScore, displayTurn, displayResult}
@@ -98,20 +91,57 @@ const displayControl = function(){
 
 const game = function(){
 	const boxes = document.querySelectorAll('.grid-child')
-	const play = function(){
+	const start = document.querySelector('#play')
+	const result = document.querySelector('.result')
+	const openingDialog = document.querySelector('.opening')
+	const resetBtn = document.querySelector('.reset')
+	const nextRound = document.querySelector('.result > button')
+	const restart = function () {
+		gamecontrols.gameboard.splice(0, gamecontrols.gameboard.length)
+		gamecontrols.currentPlayer = X
+		displayControl.displayBoard()
+		displayControl.displayScore()
+		play()
+	}
+	
+	resetBtn.addEventListener('click', restart)
+	nextRound.addEventListener('click', () => {result.close(); restart()})	
+	const play = function() {
+		displayControl.displayTurn()
 		boxes.forEach((box) => {
 			box.addEventListener('click', () => {
 				let id = box.dataset.id
-				if (gamecontrols.showGameboard(id) === undefined){
+				if (gamecontrols.showGameboard(id) === undefined) {
 					gamecontrols.play_at(id)
 					gamecontrols.switchPlayer()
 					displayControl.displayBoard()
+					displayControl.displayTurn()
+					let status = gamecontrols.check_status()
+					if (status) {
+						displayControl.displayResult(status)
+					}
 				}
 				
 			})
 		})
 	}
-	return {play}
+	
+	const startGame = function () {
+		openingDialog.show()
+		
+		start.addEventListener('click', () => {
+			const player1 = document.querySelector('#player1')
+			const player2 = document.querySelector('#player2')
+			if (player1.value && player2.value) {
+				X.name = player1.value.trim();
+				O.name = player2.value.trim();
+				openingDialog.close()
+				displayControl.displayScore()
+				play()
+			}
+		})
+	}
+	return {startGame}
 }()
 
-game.play()
+game.startGame()
