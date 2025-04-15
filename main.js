@@ -12,7 +12,7 @@ const gamecontrols = function(){
 	
 	let gameboard = [];
 	let currentPlayer = X;
-	const showGameboard = function(at){return this.gameboard[at];}
+	const showGameboard = function(at){return gameboard[at];}
 	const check_status = function (){
 		if(((gameboard[0] === gameboard[1] &&  gameboard[0] === gameboard[2]) || 
 			(gameboard[0] === gameboard[3] &&  gameboard[0] === gameboard[6]) || 
@@ -29,7 +29,7 @@ const gamecontrols = function(){
 		
 		else if (gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8] && gameboard[6] !== undefined){return gameboard[6]}
 		
-		else if (!undefined in gameboard && gameboard.length === 9){return 'draw'}
+		else if ((!gameboard.includes(undefined)) && gameboard.length === 9){return 'draw'}
 	};
 	
 	const play_at = function(area){
@@ -75,6 +75,7 @@ const displayControl = function(){
 		switch (winner){
 			case 'draw':
 				resultText.textContent = 'You drawed'
+				console.log(gamecontrols.gameboard)
 				break
 			case 'X':
 				resultText.textContent = `${X.name} won`
